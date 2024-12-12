@@ -1,0 +1,62 @@
+//D121241074 Ainun Jariah
+
+#include <stdio.h>
+#include <string.h>
+
+// Fungsi untuk menampilkan status segmen a-g
+void tampilkanStatusSegment(int angka) {
+    const char* segmentStatus[] = {
+        "a=1 b=1 c=1 d=1 e=1 f=1 g=0", // 0
+        "a=0 b=1 c=1 d=0 e=0 f=0 g=0", // 1
+        "a=1 b=1 c=0 d=1 e=1 f=0 g=1", // 2
+        "a=1 b=1 c=1 d=1 e=0 f=0 g=1", // 3
+        "a=0 b=1 c=1 d=0 e=0 f=1 g=1", // 4
+        "a=1 b=0 c=1 d=1 e=0 f=1 g=1", // 5
+        "a=1 b=0 c=1 d=1 e=1 f=1 g=1", // 6
+        "a=1 b=1 c=1 d=0 e=0 f=0 g=0", // 7
+        "a=1 b=1 c=1 d=1 e=1 f=1 g=1", // 8
+        "a=1 b=1 c=1 d=1 e=0 f=1 g=1"  // 9
+    };
+    printf("Status Segment untuk angka %d:\n%s\n", angka, segmentStatus[angka]);
+}
+
+// Fungsi untuk menampilkan visualisasi seven-segment
+void tampilkanSevenSegment(int angka) {
+    const char* sevenSegment[] = {
+        " _ \n| |\n|_|", // 0
+        "   \n  |\n  |", // 1
+        " _ \n _|\n|_", // 2
+        " _ \n _|\n _|", // 3
+        "   \n|_|\n  |", // 4
+        " _ \n|_ \n _|", // 5
+        " _ \n|_ \n|_|", // 6
+        " _ \n  |\n  |", // 7
+        " _ \n|_|\n|_|", // 8
+        " _ \n|_|\n _|"  // 9
+    };
+    printf("Visualisasi Seven Segment:\n%s\n", sevenSegment[angka]);
+}
+
+int main() {
+    char input[10];
+    while (1) {
+        printf("Masukkan angka (0-9) atau 'X' untuk keluar: ");
+        scanf("%s", input);
+
+        if (strcmp(input, "X") == 0 || strcmp(input, "x") == 0) {
+            printf("Keluar dari program.\n");
+            break;
+        }
+
+        if (strlen(input) == 1 && input[0] >= '0' && input[0] <= '9') {
+            int angka = input[0] - '0';
+            tampilkanStatusSegment(angka);
+            printf("\n");
+            tampilkanSevenSegment(angka);
+            printf("\n");
+        } else {
+            printf("Input tidak valid. Masukkan angka 0-9 atau 'X'.\n\n");
+        }
+    }
+    return 0;
+}
